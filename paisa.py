@@ -1,20 +1,21 @@
 import pyautogui,time
+pyautogui.PAUSE = 1
 time.sleep(2)
 
-NumberOfSearch = int(pyautogui.prompt('Number of Search'));
-NumberOfProfile = int(pyautogui.prompt('Number of Profile'));
+    # NumberOfSearch = in   t(pyautogui.prompt('Number of Search'))
+
+# india         
+NumberOfSearchMob,NumberOfSearchPC = "30","40"
+
+# usa
+# NumberOfSearchMob,NumberOfSearchPC = "40","60"
+
+NumberOfProfile = 17;
 
 # button position 
 x,y = 1532,63
 # close button position
 x1,y1 = 26,21
-
-pyautogui.keyDown('command')
-pyautogui.press('space')
-pyautogui.keyUp('command')
-pyautogui.write("microsoft Edge")
-pyautogui.press('enter') 
-time.sleep(3)
 
 # for searching
 def search():
@@ -24,40 +25,48 @@ def search():
     pyautogui.write("fsda")
     pyautogui.press('enter') 
     for i in range(0,NumberOfSearch):
-        time.sleep(.4)
         pyautogui.keyDown('command')
         pyautogui.press(str((i%2)+1))
         pyautogui.press("l")
         pyautogui.keyUp('command')
         pyautogui.write(str(i))
         pyautogui.press('enter') 
-
-# for first profile
-search()
+# search()
 
 
-# # for next profiles
+def extension():
+    pyautogui.click(1567,52) #menu
+    pyautogui.click(1424,394) #extension
+    pyautogui.typewrite("")
+    pyautogui.press('enter')     
+    pyautogui.typewrite("")           
+    pyautogui.press('tab')
+    pyautogui.typewrite(NumberOfSearchPC)
+    pyautogui.press('tab')
+    pyautogui.typewrite(NumberOfSearchMob)
+    for i in range(0,5):
+        pyautogui.press('tab')
+    pyautogui.press('enter')
+extension()
+
+
+# # for  profiles
 for i in range(0,NumberOfProfile):
-    time.sleep(.5)
-    if i!=0:
-        pyautogui.click(x1, y1)
-        time.sleep(.5)
+    # if i!=0:
+    #     pyautogui.click(x1, y1)
     pyautogui.click(x, y)
-    time.sleep(.5)
 
     # for accessing the next profile
     for j in range(-1,i):
         pyautogui.press('tab') 
-    time.sleep(.5)
     pyautogui.press('enter') 
-
     # for searching
-    search()
+    # search()
+    extension()
 
-for i in range(0,2):
-    pyautogui.keyDown('command')
-    pyautogui.press('Q')
-    pyautogui.keyUp('command')
+
+
+
 
 '''
     Data
